@@ -1,7 +1,12 @@
 const globalErrorHandler = (err, req, res, next) => {
+  let message = "Internal server error";
   console.log(err.stack);
 
-  res.status(500).json({ error: "Internal server error" });
+  res.status(500).json({
+    success: false,
+    message: err.message || message,
+    stack: process.env.NODE_ENV === "development" ? err.stack : null,
+  });
 };
 
-module.exports = globalErrorHandler
+module.exports = globalErrorHandler;
