@@ -1,6 +1,5 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model } from "mongoose";
 import bcrypt from "bcryptjs";
-import { Iuser } from "@/types";
 
 const UserSchema = new Schema(
   {
@@ -41,5 +40,12 @@ UserSchema.pre("save", async function (next) {
   }
   next();
 });
+
+UserSchema.methods.toJSON = function () {
+  const user = this;
+  const userObject = user.toObject();
+  delete userObject.password;
+  return userObject;
+};
 
 export const User = model("User", UserSchema);

@@ -1,7 +1,11 @@
-const { Router } = require("express");
+import { Router } from "express";
+import { userController } from "../controllers/user.controller.js";
+
+
 
 const router = Router();
 
-router.get("/", () => {});
+// Public Route
+router.post("/auth/register", userController.registerUser);
 
 export const userRouter = router;
