@@ -114,6 +114,10 @@ const loginUser = catchAsync(async (req, res) => {
   });
 });
 
+// -refresh accessToken
+// -Api Endpoint /user/auth/refreshToken
+// -Method POST
+
 export const refreshAccessToken = catchAsync(async (req, res) => {
   // * get the refresh token
   const refreshToken = req.cookies.refreshToken;
@@ -152,6 +156,10 @@ export const refreshAccessToken = catchAsync(async (req, res) => {
     });
   });
 });
+
+//* -delete refreshToken
+//  -Api Endpoint /user/auth/refreshToken
+//! -Method DELETE
 
 const logoutUser = catchAsync((req, res) => {
   res.clearCookie("refreshToken");
