@@ -6,11 +6,13 @@ import router from "./app/routes/index.js";
 import globalErrorHandler from "./app/middlewares/globalErrorhandler.js";
 import notFound from "./app/middlewares/notFound.js";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser())
 app.use(
   cors({
     origin: ["http://localhost:3000"],
