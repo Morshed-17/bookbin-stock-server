@@ -1,3 +1,5 @@
+import config from "../config/index.js";
+
 const globalErrorHandler = (err, req, res, next) => {
   let message = "Internal server error";
   console.log(err.stack);
@@ -5,7 +7,7 @@ const globalErrorHandler = (err, req, res, next) => {
   res.status(500).json({
     success: false,
     message: err.message || message,
-    stack: process.env.NODE_ENV === "development" ? err.stack : null,
+    stack: config.node_env === "development" ? err.stack : null,
   });
 };
 

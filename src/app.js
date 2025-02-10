@@ -6,6 +6,7 @@ import router from "./app/routes/index.js";
 import globalErrorHandler from "./app/middlewares/globalErrorhandler.js";
 import notFound from "./app/middlewares/notFound.js";
 import cors from "cors";
+dotenv.config();
 
 const app = express();
 
@@ -15,8 +16,6 @@ app.use(
     origin: ["http://localhost:3000"],
   })
 );
-
-dotenv.config();
 
 app.get(
   "/",
