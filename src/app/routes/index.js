@@ -1,18 +1,12 @@
-const { Router } = require("express");
+import { Router } from "express";
 
 const router = Router();
 
-
-//* auth routes
-
-router.use("/auth", () => {});
-
-
 //* items routes
-router.use("/items", () => {})
+router.use("/users", () => {});
 
+router.use("/items", () => {});
 
 //* users routes
-router.use("/users", () => {})
 
-module.exports = router;
+export default router;

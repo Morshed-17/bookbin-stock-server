@@ -6,4 +6,4 @@ const sendResponse = (res, data) => {
   });
 };
 
-module.exports = sendResponse;
+export default sendResponse;

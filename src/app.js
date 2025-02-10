@@ -1,13 +1,14 @@
-const express = require("express");
-const router = require("./app/routes");
-const globalErrorHandler = require("./app/middlewares/globalErrorhandler");
-const catchAsync = require("./app/utils/catchAsync");
-const AppError = require("./app/error/AppError");
-const sendResponse = require("./app/utils/sendResponse");
+import express from "express"
+import dotenv from "dotenv"
+import catchAsync from "./app/utils/catchAsync.js";
+import sendResponse from "./app/utils/sendResponse.js";
+import router from "./app/routes/index.js";
+import globalErrorHandler from "./app/middlewares/globalErrorhandler.js";
+import notFound from "./app/middlewares/notFound.js";
 
 const app = express();
 
-require("dotenv").config();
+dotenv.config()
 
 app.get(
   "/",
@@ -24,8 +25,13 @@ app.get(
   })
 );
 
+
 app.use("/api", router);
 
+// global error handler
 app.use(globalErrorHandler);
 
-module.exports = app;
+// Not found route
+app.use(notFound)
+
+export default app;

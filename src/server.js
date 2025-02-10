@@ -1,6 +1,6 @@
-const app = require("./app");
-const config = require("./app/config");
-const mongoose = require("mongoose");
+import app from "./app.js";
+import config from "./app/config/index.js";
+import mongoose from "mongoose";
 
 async function main() {
   try {
